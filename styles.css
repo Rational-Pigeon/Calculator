@@ -50,9 +50,9 @@ h1 {
     align-items: center;
     width: 400px;
     height: 600px;
-    border-top: solid 10px #F09EA7;
+    border-top: solid 12px #F09EA7;
     border-bottom: solid 5px #F09EA7;
-    border-right: solid 20px #F09EA7;
+    border-right: solid 24px #F09EA7;
     border-left: solid 5px #F09EA7;
     border-radius: 12px;
     background-color: #f6c2f3;
@@ -154,6 +154,7 @@ h1 {
 
 .btn {
     cursor: pointer;
+    border-radius: 12px;
 }
 
 
