@@ -18,7 +18,12 @@ function operate(num1, operation, num2) {
         case "×":
             return (num1 * num2).toString();
         case "÷":
-            return (num1 / num2).toString();
+            if (num2 === 0) {
+                return "୧༼ಠ益ಠ༽୨";
+            }
+            else {
+                return (num1 / num2).toFixed(2).toString();
+            }
     }
 }
 
@@ -39,9 +44,18 @@ function updateNumbers(event) {
 }
 
 function updateDisplay() {
+    // fun div by 0 error:
+    if (display === "୧༼ಠ益ಠ༽୨") {
+        displayScreen.textContent = display;
+        return;
+    }
     //remove leading zeroes
     display = (+display).toString();
-    displayScreen.textContent = display;
+    if (display.length <= 11) {
+        displayScreen.textContent = display;
+    }
+    else
+        displayScreen.textContent = "＼（〇_ｏ）／"
 }
 
 function clear() {
