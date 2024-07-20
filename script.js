@@ -5,6 +5,7 @@ let display = "0";
 const keys = document.querySelectorAll(".btn");
 const buttons = document.getElementById("calculator");
 const displayScreen = document.getElementById("display");
+updateDisplay();
 
 function operate(num1, operation, num2) {
     num1 = +num1;
@@ -39,14 +40,22 @@ function updateNumbers(event) {
 
 function updateDisplay() {
     //remove leading zeroes
-    display = display.replace(/^0+/, '');
+    display = (+display).toString();
     displayScreen.textContent = display;
+}
+
+function clear() {
+    num1 = "";
+    num2 = "";
+    display = "0";
+    operation = null;
 }
 
 function update(event) {
     if (event.target.classList.contains("num")) {
         updateNumbers(event);
     }
+
     else if (event.target.classList.contains("op")) {
         if (!operation) {
             operation = event.target.textContent;
@@ -63,6 +72,7 @@ function update(event) {
             num2 = "";
         }
     }
+
     else if (event.target.classList.contains("eq")) {
         if (operation) {
             display = operate(num1, operation, num2);
@@ -72,6 +82,11 @@ function update(event) {
         }
         else { return }
     }
+
+    else if (event.target.classList.contains("clear")) {
+        clear();
+    }
+
     updateDisplay();
 }
 
