@@ -59,6 +59,21 @@ function backspace() {
     }
 }
 
+function flipSign() {
+    if (operation) {
+        if (num2) {
+            num2 = (-(+num2)).toString();
+            display = num2;
+        }
+    }
+    else {
+        if (num1) {
+            num1 = (-(+num1)).toString();
+            display = num1;
+        }
+    }
+}
+
 function updateDisplay() {
     // fun div by 0 error:
     if (display === "୧༼ಠ益ಠ༽୨") {
@@ -119,6 +134,10 @@ function update(event) {
 
     else if (event.target.classList.contains("backspace")) {
         backspace();
+    }
+
+    else if (event.target.classList.contains("sign")) {
+        flipSign();
     }
 
     updateDisplay();
