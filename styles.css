@@ -152,6 +152,10 @@ h1 {
     border-top: solid 2px #cdabeb;
 }
 
+.btn {
+    cursor: pointer;
+}
+
 
 .background {
     position: absolute;
