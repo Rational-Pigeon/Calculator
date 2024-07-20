@@ -43,6 +43,22 @@ function updateNumbers(event) {
 
 }
 
+function backspace() {
+    if (operation) {
+        if (num2) {
+            num2 = num2.slice(0, -1);
+            display = num2;
+        }
+        else { return; }
+    }
+    else {
+        if (num1) {
+            num1 = num1.slice(0, -1);
+            display = num1;
+        }
+    }
+}
+
 function updateDisplay() {
     // fun div by 0 error:
     if (display === "୧༼ಠ益ಠ༽୨") {
@@ -99,6 +115,10 @@ function update(event) {
 
     else if (event.target.classList.contains("clear")) {
         clear();
+    }
+
+    else if (event.target.classList.contains("backspace")) {
+        backspace();
     }
 
     updateDisplay();
