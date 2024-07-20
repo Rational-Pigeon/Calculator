@@ -12,11 +12,11 @@ function operate(num1, operation, num2) {
     num2 = +num2;
     switch (operation) {
         case "+":
-            return (num1 + num2).toString();
+            return (num1 + num2).toFixed(2).toString();
         case "-":
-            return (num1 - num2).toString();
+            return (num1 - num2).toFixed(2).toString();
         case "×":
-            return (num1 * num2).toString();
+            return (num1 * num2).toFixed(2).toString();
         case "÷":
             if (num2 === 0) {
                 return "୧༼ಠ益ಠ༽୨";
@@ -27,6 +27,7 @@ function operate(num1, operation, num2) {
     }
 }
 
+// to handle clicking number buttons 
 function updateNumbers(event) {
     if (operation) {
         if (num2.length <= 10) {
@@ -74,6 +75,25 @@ function flipSign() {
     }
 }
 
+// to handle clicking "." sign button
+function makeDecimal() {
+    if (operation) {
+        num2 = num2 ? num2 : "0";
+        if (!(num2.includes("."))) {
+            num2 += ".";
+            display = num2;
+        }
+    }
+    else {
+        num1 = num1 ? num1 : "0";
+        if (!(num1.includes("."))) {
+            num1 += ".";
+            display = num1;
+        }
+    }
+}
+
+
 function updateDisplay() {
     // fun div by 0 error:
     if (display === "୧༼ಠ益ಠ༽୨") {
@@ -96,6 +116,7 @@ function clear() {
     operation = null;
 }
 
+// main function. it runs upon the first click event on a button
 function update(event) {
     if (event.target.classList.contains("num")) {
         updateNumbers(event);
@@ -140,16 +161,21 @@ function update(event) {
         flipSign();
     }
 
+    else if (event.target.classList.contains("dot")) {
+        makeDecimal();
+    }
+
     updateDisplay();
 }
 
-buttons.addEventListener("click", update)
+buttons.addEventListener("click", update, true)
 
 
 
 
 
-// button interactivity
+// creating a depth effect using border styling to make 
+// buttons feel more interactive
 keys.forEach(key => {
     key.addEventListener("click", () => {
         key.style.borderTopColor = "#f6c2f3";
