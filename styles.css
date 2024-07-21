@@ -24,7 +24,6 @@ body,
 body {
     flex-flow: nowrap column;
     align-items: center;
-    font-family: "Pixelify Sans", sans-serif;
 }
 
 .title {
